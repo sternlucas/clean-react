@@ -50,7 +50,8 @@
     "react/react-in-jsx-scope": "off",
     "prettier/prettier": "error",
     "@typescript-eslint/consistent-type-definitions": "off",
-    "@typescript-eslint/strict-boolean-expressions": "off"
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    "no-useless-constructor": "off"
   },
   "settings": {
     "import/resolver": {
