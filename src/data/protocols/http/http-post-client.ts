@@ -1,3 +1,6 @@
-export default interface HttpPostClient {
-  post(url: string): Promise<void>;
+export type HttpPostParams = {
+  url: string;
+};
+export interface HttpPostClient {
+  post(params: HttpPostParams): Promise<void>;
 }
