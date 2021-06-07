@@ -51,7 +51,8 @@
     "prettier/prettier": "error",
     "@typescript-eslint/consistent-type-definitions": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
-    "no-useless-constructor": "off"
+    "no-useless-constructor": "off",
+    "import/no-extraneous-dependencies": "off"
   },
   "settings": {
     "import/resolver": {
