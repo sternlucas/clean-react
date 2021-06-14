@@ -15,7 +15,7 @@ const makeSut = (): AxiosHttpClient => {
   return new AxiosHttpClient();
 };
 
-const mockPostRequest = (): HttpPostParams<any> => ({
+const mockPostRequest = (): HttpPostParams<unknown> => ({
   url: faker.internet.url(),
   body: faker.random.objectElement(),
 });
