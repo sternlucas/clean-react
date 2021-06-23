@@ -1,4 +1,6 @@
-import React from 'react';
+import Context from '@/presentation/contexts/form/form-context';
+import React, { useContext } from 'react';
+
 import Styles from './input-styles.scss';
 
 type Props = React.DetailedHTMLProps<
@@ -7,6 +9,20 @@ type Props = React.DetailedHTMLProps<
 >;
 
 const Input: React.FC<Props> = (props: Props) => {
+  const { errorState } = useContext(Context);
+
+  const { name } = props;
+
+  const error = errorState[name];
+
+  const getStatus = (): string => {
+    return '🔴';
+  };
+
+  const getTitle = (): string => {
+    return error;
+  };
+
   return (
     <div className={Styles.inputWrap}>
       <input
@@ -16,7 +32,13 @@ const Input: React.FC<Props> = (props: Props) => {
           e.target.readOnly = false;
         }}
       />
-      <span className={Styles.status}>🔴</span>
+      <span
+        data-testid={`${name}-status`}
+        title={getTitle()}
+        className={Styles.status}
+      >
+        {getStatus()}
+      </span>
     </div>
   );
 };
