@@ -10,9 +10,7 @@ type Props = React.DetailedHTMLProps<
 
 const Input: React.FC<Props> = (props: Props) => {
   const { errorState } = useContext(Context);
-
   const { name } = props;
-
   const error = errorState[name];
 
   const getStatus = (): string => {
