@@ -9,9 +9,20 @@ type Props = React.DetailedHTMLProps<
 >;
 
 const Input: React.FC<Props> = (props: Props) => {
-  const { errorState } = useContext(Context);
+  const { state, setState } = useContext(Context);
   const { name } = props;
-  const error = errorState[name];
+  const error = state[`${name}Error`];
+
+  const enableInput = (event: React.FocusEvent<HTMLInputElement>): void => {
+    event.target.readOnly = false;
+  };
+
+  const handleChange = (event: React.FocusEvent<HTMLInputElement>): void => {
+    setState({
+      ...state,
+      [event.target.name]: event.target.value,
+    });
+  };
 
   const getStatus = (): string => {
     return '🔴';
@@ -25,10 +36,10 @@ const Input: React.FC<Props> = (props: Props) => {
     <div className={Styles.inputWrap}>
       <input
         {...props}
+        data-testid={name}
         readOnly
-        onFocus={e => {
-          e.target.readOnly = false;
-        }}
+        onFocus={enableInput}
+        onChange={handleChange}
       />
       <span
         data-testid={`${name}-status`}
