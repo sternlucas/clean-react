@@ -11,14 +11,13 @@ export class ValidationComposite implements Validation {
   validate(fieldName: string, fieldValue: string): string {
     const validators = this.validators.filter(v => v.field === fieldName);
 
-    validators.forEach(v => {
-      const error = v.validate(fieldValue);
+    for (let index = 0; index < validators.length; index += 1) {
+      const element = validators[index];
+      const error = element.validate(fieldValue);
       if (error) {
         return error.message;
       }
-
-      return v;
-    });
+    }
 
     return null;
   }
