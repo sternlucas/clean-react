@@ -4,6 +4,7 @@ import { ValidationComposite } from './validation-composite';
 describe('ValidationComposite', () => {
   test('Should return error if any validation fails', () => {
     const fieldValidationSpy = new FieldValidationSpy('');
+    fieldValidationSpy.error = new Error('message');
     const fieldValidationSpy2 = new FieldValidationSpy('');
     fieldValidationSpy2.error = new Error('message');
     const sut = new ValidationComposite([
