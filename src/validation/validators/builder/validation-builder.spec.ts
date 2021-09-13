@@ -21,7 +21,7 @@ describe('ValidationBuilder', () => {
 
   test('Should return MinLenghtValidation', () => {
     const field = faker.database.column();
-    const length = faker.random.number();
+    const length = faker.datatype.number();
     const validations = ValidationBuilder.field(field).min(length).build();
     expect(validations).toEqual([new MinLengthValidation(field, length)]);
   });
