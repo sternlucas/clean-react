@@ -4,8 +4,12 @@ import { Validation } from '@/presentation/protocols';
 export class ValidationComposite implements Validation {
   validators: FieldValidation[];
 
-  constructor(validators: FieldValidation[]) {
+  private constructor(validators: FieldValidation[]) {
     this.validators = validators;
+  }
+
+  static build(validators: FieldValidation[]): ValidationComposite {
+    return new ValidationComposite(validators);
   }
 
   validate(fieldName: string, fieldValue: string): string {
