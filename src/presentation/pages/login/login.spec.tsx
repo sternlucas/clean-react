@@ -13,7 +13,7 @@ import faker from 'faker';
 import { InvalidCredentialsError } from '@/domain/errors';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
-import Login from './login';
+import { Login } from '@/presentation/pages';
 
 type SutTypes = {
   sut: RenderResult;
