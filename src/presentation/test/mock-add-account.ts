@@ -7,8 +7,11 @@ export class AddAccountSpy implements AddAccount {
 
   params: AddAccountParams;
 
+  callsCount = 0;
+
   add(params: AddAccountParams): Promise<AccountModel> {
     this.params = params;
+    this.callsCount += 1;
     return Promise.resolve(this.account);
   }
 }
