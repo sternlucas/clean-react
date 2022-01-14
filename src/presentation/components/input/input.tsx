@@ -34,6 +34,8 @@ const Input: React.FC<Props> = (props: Props) => {
         }}
       />
       <label
+        role="presentation"
+        htmlFor="placeholder"
         onClick={() => {
           inputRef.current.focus();
         }}
