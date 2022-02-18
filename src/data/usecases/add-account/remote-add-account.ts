@@ -4,20 +4,14 @@ import { AccountModel } from '@/domain/models';
 import { AddAccount, AddAccountParams } from '@/domain/usecases';
 
 export class RemoteAddAccount implements AddAccount {
-  constructor(
-    url: string,
-    httpPostClient: HttpPostClient<AddAccountParams, AccountModel>,
-  ) {
+  constructor(url: string, httpPostClient: HttpPostClient<AccountModel>) {
     this.url = url;
     this.httpPostClient = httpPostClient;
   }
 
   private readonly url: string;
 
-  private readonly httpPostClient: HttpPostClient<
-    AddAccountParams,
-    AccountModel
-  >;
+  private readonly httpPostClient: HttpPostClient<AccountModel>;
 
   async add(params: AddAccountParams): Promise<AccountModel> {
     const httpResponse = await this.httpPostClient.post({

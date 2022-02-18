@@ -4,20 +4,14 @@ import { InvalidCredentialsError, UnexpectedError } from '@/domain/errors';
 import { AccountModel } from '@/domain/models';
 
 export class RemoteAuthentication implements Authentication {
-  constructor(
-    url: string,
-    httpPostClient: HttpPostClient<AuthenticationParams, AccountModel>,
-  ) {
+  constructor(url: string, httpPostClient: HttpPostClient<AccountModel>) {
     this.url = url;
     this.httpPostClient = httpPostClient;
   }
 
   private readonly url: string;
 
-  private readonly httpPostClient: HttpPostClient<
-    AuthenticationParams,
-    AccountModel
-  >;
+  private readonly httpPostClient: HttpPostClient<AccountModel>;
 
   async auth(params: AuthenticationParams): Promise<AccountModel> {
     const httpResponse = await this.httpPostClient.post({
